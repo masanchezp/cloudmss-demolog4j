@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello lunes') {
+        stage('Git Clone') {
             steps {
-                echo 'Hello World'
+                echo 'Clone'
+                git clone https://github.com/masanchezp/app-training-cloudmss.git
             }
         }
     }
