@@ -1,0 +1,9 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+         "Name": "masprieto/app-training"
+    },
+    "Ports": [
+        {"ContainerPort": "80"}
+    ]
+}
