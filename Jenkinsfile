@@ -1,7 +1,6 @@
+@Library('github.com/releaseworks/jenkinslib') _
 pipeline {
     agent any
-
-    @Library('github.com/releaseworks/jenkinslib') _
 
     environment {
         AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
