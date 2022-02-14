@@ -5,7 +5,7 @@ pipeline {
         stage('Git Clone') {
             steps {
                 echo 'Clone'
-                sh 'git clone https://github.com/masanchezp/app-training-cloudmss.git'
+                //sh 'git clone https://github.com/masanchezp/app-training-cloudmss.git'
             }
         }
         stage('Build') {
