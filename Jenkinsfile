@@ -56,9 +56,10 @@ pipeline {
 			steps {
                 echo 'AWS Deployment'
 
-                withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
-                sh 'sudo python3 -m awscli s3 ls'
+                //withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
+                //sh 'sudo python3 -m awscli s3 ls'
                 //sh 'aws s3 ls'
+                sh 'sudo docker run -d --rm -it -p 80:80 masprieto/app-training'
                 }
 
          
