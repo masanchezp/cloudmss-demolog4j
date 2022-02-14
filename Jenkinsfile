@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+    }      
 
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub-cred-masp')
@@ -48,6 +52,15 @@ pipeline {
 			steps {
                 echo 'Push Dockerhub'
 				sh 'docker push masprieto/app-training:latest'
+			}
+		}
+
+        stage('AWS deployment') {
+
+			steps {
+                echo 'AWS Deployment'
+				sh 'aws configure set region us-west-2'
+                sh 'aws s3 ls'
 			}
 		}
     }
