@@ -1,4 +1,3 @@
-@Library('github.com/releaseworks/jenkinslib') _
 pipeline {
     agent any
 
@@ -56,12 +55,12 @@ pipeline {
 
 			steps {
                 echo 'AWS Deployment'
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws-key', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                AWS("--region=us-west-2 s3 ls")
+
+                withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
+                sh 'aws s3 ls'
                 }
-                //sh 'sudo python3 -m awscli configure set region us-west-2'
-				//sh 'aws configure set region us-west-2'
-                //sh 'aws s3 ls'
+
+         
 			}
 		}
     }
