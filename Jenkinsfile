@@ -15,7 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                //sh 'docker build --no-cache -t masprieto/app-training .'
+                sh 'docker build --no-cache -t masprieto/app-training .'
             }
         }
 
@@ -23,16 +23,16 @@ pipeline {
             steps {
                 // Scan the image
                 echo 'scan'
-                //prismaCloudScanImage ca: '',
-                //cert: '',
-                //dockerAddress: 'unix:///var/run/docker.sock',
-                //image: 'masprieto/app-training*',
-               //key: '',
-                //logLevel: 'info',
-                //podmanPath: '',
-                //project: '',
-                //resultsFile: 'prisma-cloud-scan-results.json',
-                //ignoreImageBuildTime:true
+                prismaCloudScanImage ca: '',
+                cert: '',
+                dockerAddress: 'unix:///var/run/docker.sock',
+                image: 'masprieto/app-training*',
+                key: '',
+                logLevel: 'info',
+                podmanPath: '',
+                project: '',
+                resultsFile: 'prisma-cloud-scan-results.json',
+                ignoreImageBuildTime:true
             }
         }
 
@@ -40,7 +40,7 @@ pipeline {
 
 			steps {
                 echo 'Login Dockerhub'
-				//sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
 
@@ -48,7 +48,7 @@ pipeline {
 
 			steps {
                 echo 'Push Dockerhub'
-				//sh 'docker push masprieto/app-training:latest'
+				sh 'docker push masprieto/app-training:latest'
 			}
 		}
 
@@ -70,9 +70,9 @@ pipeline {
         always {
             echo 'Docker logout and more'
             // docker logout
-            //sh 'docker logout'
+            sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
-            //prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
+            prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
         }
     }
 }
