@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t masprieto/app-training .'
+                //sh 'docker build --no-cache -t masprieto/app-training .'
             }
         }
     }
