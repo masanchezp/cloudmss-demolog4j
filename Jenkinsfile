@@ -22,6 +22,7 @@ pipeline {
         stage('Scan') {
             steps {
                 // Scan the image
+                echo 'scan'
                 //prismaCloudScanImage ca: '',
                 //cert: '',
                 //dockerAddress: 'unix:///var/run/docker.sock',
@@ -66,6 +67,7 @@ pipeline {
     }
      post {
         always {
+            echo 'Docker logout and more'
             // docker logout
             //sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
