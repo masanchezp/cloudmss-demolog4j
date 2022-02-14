@@ -51,6 +51,7 @@ pipeline {
 				sh 'docker push masprieto/app-training:latest'
 			}
 		}
+        
         stage('AWS deployment') {
 
 			steps {
