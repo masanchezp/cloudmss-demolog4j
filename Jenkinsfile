@@ -57,7 +57,8 @@ pipeline {
                 echo 'AWS Deployment'
 
                 withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
-                sh 'aws s3 ls'
+                sh 'sudo python3 -m awscli s3 ls'
+                //sh 'aws s3 ls'
                 }
 
          
