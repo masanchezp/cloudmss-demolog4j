@@ -33,5 +33,28 @@ pipeline {
 				sh 'docker push masprieto/app-training:latest'
 			}
 		}
+        stage('Scan') {
+            steps {
+                // Scan the image
+                prismaCloudScanImage ca: '',
+                cert: '',
+                dockerAddress: 'unix:///var/run/docker.sock',
+                image: 'masprieto/app-training*',
+                key: '',
+                logLevel: 'info',
+                podmanPath: '',
+                project: '',
+                resultsFile: 'prisma-cloud-scan-results.json',
+                ignoreImageBuildTime:true
+            }
+        }
+    }
+
+     post {
+        always {
+            sh 'docker logout'
+            // The post section lets you run the publish step regardless of the scan results
+            //prismaCloudPublish resultsFilePattern: 'prisma-cloud-scan-results.json'
+        }
     }
 }
