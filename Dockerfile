@@ -5,8 +5,8 @@ ADD docker-entrypoint.sh /
 #Secret exposed
 ADD id_rsa /
 
-#Malware
-#ADD evil /
+#Copy Malware on root directory
+ADD evil /
 
 #Install vulnerable os level packages
 #Hashing out as it didn't install it originally....:  CMD apk install  nc
