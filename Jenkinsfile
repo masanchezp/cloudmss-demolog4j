@@ -56,7 +56,8 @@ pipeline {
 
 			steps {
                 echo 'AWS Deployment'
-				sh 'aws configure set region us-west-2'
+                sh 'sudo python3 -m awscli configure set region us-west-2'
+				//sh 'aws configure set region us-west-2'
                 sh 'aws s3 ls'
 			}
 		}
