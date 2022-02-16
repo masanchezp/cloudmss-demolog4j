@@ -3,7 +3,7 @@ FROM nginx:1.21.6-alpine
 ADD docker-entrypoint.sh /
 
 #Secret exposed
-#ADD id_rsa /
+# ADD id_rsa /
 
 #Copy Malware on root directory
 #ADD evil /

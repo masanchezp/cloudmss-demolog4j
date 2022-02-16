@@ -21,7 +21,7 @@ pipeline {
 
         stage('Security Scan') {
             steps {
-                // Scan the image
+                //Scan the image
                 echo 'scan'
                 prismaCloudScanImage ca: '',
                 cert: '',
