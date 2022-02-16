@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Scan') {
+        stage('Security Scan') {
             steps {
                 // Scan the image
                 echo 'scan'
