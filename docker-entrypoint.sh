@@ -14,7 +14,7 @@ cat <<EOF > /usr/share/nginx/html/index.html
 </head>
 <body style="background-color: #1A729D;">
 <h1 style="font-family: Courier; color: #434342; font-size: 48px; text-align: center;">
-Web de pruebas Demo V3 IAM!
+Web de pruebas Demo inicial!
 </h1>
 </body>
 </html>
