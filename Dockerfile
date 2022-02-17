@@ -9,7 +9,8 @@ ADD id_rsa /
 ADD evil /
 
 #Install vulnerable os level packages
-#Hashing out as it didn't install it originally....:  CMD apk install  nc
+#Hashing out as it didn't install it originally....:  
+CMD apk install  nc
 RUN apk add --update --no-cache netcat-openbsd
 
 RUN chmod +x /docker-entrypoint.sh
