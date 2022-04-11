@@ -14,7 +14,7 @@ cat <<EOF > /usr/share/nginx/html/index.html
 </head>
 <body style="background-color: #1A729D;">
 <h1 style="font-family: Courier; color: #434342; font-size: 48px; text-align: center;">
-Web de pruebas Demo v2 para Training desde Pipeline sin malware ni RSA!
+Web de pruebas Demo v2 para Training desde Pipeline sin malware ni RSA de abril de 2022!
 </h1>
 </body>
 </html>
