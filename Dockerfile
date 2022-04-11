@@ -4,8 +4,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2
 
-RUN apt update
-RUN apt install liblog4j2-java
+#RUN apt-get update
+#RUN apt-get install liblog4j2-java
 
 #"web page"
 ADD index.html /var/www/html/index.html
