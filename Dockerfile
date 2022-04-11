@@ -4,6 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2
 
+#"web page"
 ADD index.html /var/www/html/index.html
 
 RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
