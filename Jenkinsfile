@@ -9,7 +9,7 @@ pipeline {
         stage('Git Clone') {
             steps {
                 echo 'Clone'
-                // remove clone
+                // remove clone, not necessary
                 //sh 'git clone https://github.com/masanchezp/app-training-cloudmss.git'
             }
         }
