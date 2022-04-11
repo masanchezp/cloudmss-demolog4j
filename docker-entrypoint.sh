@@ -19,7 +19,3 @@ Web de pruebas Demo v2 para Training desde Pipeline sin malware ni RSA con el nu
 </body>
 </html>
 EOF
-
-# start nginx
-nginx -g "daemon off;"
-
