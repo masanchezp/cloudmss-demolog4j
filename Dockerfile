@@ -4,8 +4,13 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2
 
-#RUN apt-get update
-#RUN apt-get install liblog4j2-java
+RUN apt-get update
+
+#Log4j not vulnerable
+#RUN apt-get install -y liblog4j2-java
+
+#Log4j vulnerable
+RUN apt-get install -y liblog4j2-java=2.11.2-1
 
 #"web page"
 ADD index.html /var/www/html/index.html
