@@ -34,6 +34,7 @@ pipeline {
                 project: '',
                 resultsFile: 'prisma-cloud-scan-results.json',
                 ignoreImageBuildTime:true
+                echo 'If you have any doubt please contact to dstsol_soc_cloudmss@telefonica.com'
             }
         }
 
