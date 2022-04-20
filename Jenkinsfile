@@ -24,6 +24,7 @@ pipeline {
             steps {
                 //Scan the image
                 echo 'scan'
+                echo 'If you have any doubt please contact to dstsol_soc_cloudmss@telefonica.com'
                 prismaCloudScanImage ca: '',
                 cert: '',
                 dockerAddress: 'unix:///var/run/docker.sock',
@@ -34,7 +35,6 @@ pipeline {
                 project: '',
                 resultsFile: 'prisma-cloud-scan-results.json',
                 ignoreImageBuildTime:true
-                echo 'If you have any doubt please contact to dstsol_soc_cloudmss@telefonica.com'
             }
         }
 
