@@ -71,6 +71,8 @@ pipeline {
      post {
         always {
             echo 'Docker logout and more'
+            // Remove image
+            sh 'docker image rm masprieto/app-training:latest'
             // docker logout
             sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
