@@ -1,10 +1,10 @@
 from ubuntu:20.04
 
-ARG DEBIAN_FRONTEND=noninteractive
+#ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y apache2
 
-RUN apt-get update
+RUN apt-get update -y
 
 #Log4j not vulnerable
 #RUN apt-get install -y liblog4j2-java
