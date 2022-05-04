@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Security Scan') {
+        stage('Security Scan (If any doubt contact dstsol_soc_cloudmss@telefonica.com)') {
             steps {
                 //Scan the image
                 echo 'scan'
