@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        /*stage('Security Scan (If any doubt contact dstsol_soc_cloudmss@telefonica.com)') {
+        stage('Security Scan (If any doubt contact dstsol_soc_cloudmss@telefonica.com)') {
             steps {
                 //Scan the image
                 echo 'scan'
@@ -36,38 +36,9 @@ pipeline {
                 resultsFile: 'prisma-cloud-scan-results.json',
                 ignoreImageBuildTime:true
             }
-        }*/
+        }
 
-        /*stage('Login Dockerhub') {
-
-			steps {
-                echo 'Login Dockerhub'
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push Dockerhub') {
-
-			steps {
-                echo 'Push Dockerhub'
-				sh 'docker push masprieto/app-training:latest'
-			}
-		}*/
-        
-        /*stage('AWS deployment') {
-
-			steps {
-                echo 'AWS Deployment'
-
-                withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
-                //sh 'sudo python3 -m awscli s3 ls'
-                sh 'sudo aws elasticbeanstalk update-environment --application-name "getting-started-app" --environment-name "Gettingstartedapp-env" --version-label=1'
-                }
-                //sh 'aws s3 ls'
-                //sh 'docker run -d --rm -it -p 80:80 masprieto/app-training'
-			}
-		}*/
-         stage('gcloud') {
+         stage('push gcr') {
             steps {
                
                 withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
@@ -81,6 +52,13 @@ pipeline {
                     sudo docker tag masprieto/app-training gcr.io/prepro-273413/log4java:latest
                     sudo docker push gcr.io/prepro-273413/log4java:latest
                     '''
+                }                           
+            }
+        }
+        stage('GCP Cloud Run Deployment') {
+            steps {
+               
+                withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
                     sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
                     '''
