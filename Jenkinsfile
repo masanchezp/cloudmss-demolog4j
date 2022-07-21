@@ -48,10 +48,10 @@ pipeline {
                     sh '''
                     sudo gcloud auth configure-docker
                     '''
-                    sh '''
+                    /*sh '''
                     sudo docker tag masprieto/app-training gcr.io/prepro-273413/log4java:latest
                     sudo docker push gcr.io/prepro-273413/log4java:latest
-                    '''
+                    '''*/
                 }                           
             }
         }
