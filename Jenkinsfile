@@ -72,7 +72,7 @@ pipeline {
                
                 withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
                     sh '''
-                        sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                    sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
                     '''
                     sh '''
                     sudo gcloud auth configure-docker
@@ -94,8 +94,9 @@ pipeline {
      post {
         always {
             echo 'Docker logout and more'
-            // Remove image
+            // Remove images
             sh 'docker image rm masprieto/app-training:latest'
+            sh 'docker image rm gcr.io/prepro-273413/log4java:latest'
             // docker logout
             sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
