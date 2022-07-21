@@ -38,7 +38,7 @@ pipeline {
             }
         }
 
-        *stage('Login Dockerhub') {
+        stage('Login Dockerhub') {
 
 			steps {
                 echo 'Login Dockerhub'
