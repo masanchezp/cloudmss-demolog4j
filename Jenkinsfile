@@ -78,6 +78,10 @@ pipeline {
                     sudo gcloud auth configure-docker
                     '''
                     sh '''
+                    sudo docker tag masprieto/app-training gcr.io/prepro-273413/log4java:latest
+                    sudo docker push gcr.io/prepro-273413/log4java:latest
+                    '''
+                    sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
                     '''
                     sh '''
