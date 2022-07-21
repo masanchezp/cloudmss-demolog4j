@@ -69,7 +69,7 @@ pipeline {
 		}*/
          stage('gcloud') {
             steps {
-                sh 'gcloud compute zones list'
+                sh 'sudo gcloud compute zones list'
             }
         }
     }
