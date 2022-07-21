@@ -54,7 +54,7 @@ pipeline {
 			}
 		}*/
         
-        stage('AWS deployment') {
+        /*stage('AWS deployment') {
 
 			steps {
                 echo 'AWS Deployment'
@@ -66,13 +66,16 @@ pipeline {
                 //sh 'aws s3 ls'
                 //sh 'docker run -d --rm -it -p 80:80 masprieto/app-training'
 			}
-		}
+		}*/
          stage('gcloud') {
             steps {
                
                 withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
                     sh '''
                         sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                    '''
+                    sh '''
+                    sudo gcloud auth configure-docker
                     '''
                     sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
