@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - image: gcr.io/cloudrun-314201/randomquotesjava:0.1.189
+        - image: gcr.io/prepro-273413/log4java
           ports:
             - name: http1
               containerPort: 80
