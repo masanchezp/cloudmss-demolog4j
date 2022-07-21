@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t masprieto/app-training .'
+                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest .'
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
                 prismaCloudScanImage ca: '',
                 cert: '',
                 dockerAddress: 'unix:///var/run/docker.sock',
-                image: 'masprieto/app-training*',
+                image: 'gcr.io/prepro-273413/log4java*',
                 key: '',
                 logLevel: 'info',
                 podmanPath: '',
@@ -49,7 +49,6 @@ pipeline {
                     sudo gcloud auth configure-docker
                     '''
                     sh '''
-                    sudo docker tag masprieto/app-training gcr.io/prepro-273413/log4java:latest
                     sudo docker push gcr.io/prepro-273413/log4java:latest
                     '''
                 }                           
@@ -73,7 +72,7 @@ pipeline {
         always {
             echo 'Docker logout and more'
             // Remove images
-            sh 'docker image rm masprieto/app-training:latest'
+            //sh 'docker image rm masprieto/app-training:latest'
             sh 'docker image rm gcr.io/prepro-273413/log4java:latest'
             // docker logout
             sh 'docker logout'
