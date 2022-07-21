@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Security Scan (If any doubt contact dstsol_soc_cloudmss@telefonica.com)') {
+        /*stage('Security Scan (If any doubt contact dstsol_soc_cloudmss@telefonica.com)') {
             steps {
                 //Scan the image
                 echo 'scan'
@@ -36,9 +36,9 @@ pipeline {
                 resultsFile: 'prisma-cloud-scan-results.json',
                 ignoreImageBuildTime:true
             }
-        }
+        }*/
 
-        stage('Login Dockerhub') {
+        /*stage('Login Dockerhub') {
 
 			steps {
                 echo 'Login Dockerhub'
@@ -52,7 +52,7 @@ pipeline {
                 echo 'Push Dockerhub'
 				sh 'docker push masprieto/app-training:latest'
 			}
-		}
+		}*/
         
         stage('AWS deployment') {
 
@@ -82,7 +82,7 @@ pipeline {
         always {
             echo 'Docker logout and more'
             // Remove image
-            sh 'docker image rm masprieto/app-training:latest'
+            //sh 'docker image rm masprieto/app-training:latest'
             // docker logout
             sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
