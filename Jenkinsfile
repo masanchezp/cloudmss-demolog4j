@@ -74,7 +74,7 @@ pipeline {
                 '''
                 sh '''
                 sudo gcloud run services add-iam-policy-binding log4javasample --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
-                '''
+                '''                
             }
         }
     }

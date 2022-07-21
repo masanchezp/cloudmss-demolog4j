@@ -6,7 +6,8 @@ spec:
   template:
     spec:
       containers:
-        - image: gcr.io/prepro-273413/log4java
+        #- image: gcr.io/prepro-273413/log4java
+        - image: masprieto/app-training:latest
           ports:
             - name: http1
               containerPort: 80
