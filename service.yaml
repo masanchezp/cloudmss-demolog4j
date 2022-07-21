@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - image: gcr.io/prepro-273413/log4java:latest
+        - image: gcr.io/prepro-273413/log4java
           ports:
             - name: http1
               containerPort: 80
