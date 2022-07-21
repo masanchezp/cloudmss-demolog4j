@@ -69,12 +69,18 @@ pipeline {
 		}
          stage('gcloud') {
             steps {
-                sh '''
-                sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
-                '''
-                sh '''
-                sudo gcloud run services add-iam-policy-binding log4javasample --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
-                '''                
+               
+                withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
+                    sh '''
+                        sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                    '''
+                    sh '''
+                    sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
+                    '''
+                    sh '''
+                    sudo gcloud run services add-iam-policy-binding log4javasample --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
+                    ''' 
+                }                           
             }
         }
     }
