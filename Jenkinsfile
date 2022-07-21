@@ -38,23 +38,23 @@ pipeline {
             }
         }
 
-        /*stage('Login Dockerhub') {
+        *stage('Login Dockerhub') {
 
 			steps {
                 echo 'Login Dockerhub'
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
-		}*/
+		}
 
-		/*stage('Push Dockerhub') {
+		stage('Push Dockerhub') {
 
 			steps {
                 echo 'Push Dockerhub'
 				sh 'docker push masprieto/app-training:latest'
 			}
-		}*/
+		}
         
-        /*stage('AWS deployment') {
+        stage('AWS deployment') {
 
 			steps {
                 echo 'AWS Deployment'
@@ -66,7 +66,7 @@ pipeline {
                 //sh 'aws s3 ls'
                 //sh 'docker run -d --rm -it -p 80:80 masprieto/app-training'
 			}
-		}*/
+		}
          stage('gcloud') {
             steps {
                 sh '''
