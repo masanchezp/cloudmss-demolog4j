@@ -69,7 +69,9 @@ pipeline {
 		}*/
          stage('gcloud') {
             steps {
-                sh 'sudo gcloud compute zones list'
+                sh '''
+                sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
+                '''
             }
         }
     }
