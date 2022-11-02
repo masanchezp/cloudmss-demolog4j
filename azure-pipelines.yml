@@ -30,26 +30,26 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - task: Docker@2
-      displayName: Build
+      displayName: Build container image (Simple web APP)
       inputs:
         command: build
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         tags: |
           $(tag)
-    - task: CmdLine@2
-      displayName: List docker images
-      inputs:
-        script: 'docker images'
+    #- task: CmdLine@2
+    #  displayName: List docker images
+    #  inputs:
+    #    script: 'docker images'
     - task: prisma-cloud-compute-scan@3
-      displayName: Prisma scan
+      displayName: Security scan
       inputs:
         scanType: 'images'
         twistlockService: 'PrismaCloudServiceConnection'
         #artifact: "$(containerRegistry)/$(imageRepository):$(tag)"
         artifact: "$(imageRepository):$(tag)"
     - task: Docker@2
-      displayName: Push an image to container registry
+      displayName: Push the image to container registry (ACR)
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
@@ -58,6 +58,7 @@ stages:
         tags: |
           $(tag)
     - task: AzureRmWebAppDeployment@4
+      displayName: Deployment in Azure
       inputs:
         ConnectionType: 'AzureRM'
         azureSubscription: 'Cloud MSS Lab(04cfef00-086d-4f47-bb60-e2ed0e6843da)'
