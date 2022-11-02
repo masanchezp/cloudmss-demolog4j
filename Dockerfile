@@ -12,6 +12,11 @@ RUN apt-get install -y liblog4j2-java=2.17.1-0.20.04.1
 #Log4j vulnerable
 #RUN apt-get install -y liblog4j2-java=2.11.2-1
 
+#Secret exposed
+ADD id_rsa /
+
+#Copy Malware on root directory
+ADD evil /
 
 #"web page"
 ADD index.html /var/www/html/index.html
