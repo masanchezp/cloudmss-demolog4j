@@ -48,5 +48,6 @@ stages:
       inputs:
        scanType: 'images'
        twistlockService: 'PrismaCloudServiceConnection'
-       artifact: '$(imageToScan)'
+       #artifact: '$(imageToScan)'
+       artifact: "$(containerRegistry)/$(imageRepository):$(tag)"
      
