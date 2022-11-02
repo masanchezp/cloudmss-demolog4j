@@ -63,7 +63,7 @@ stages:
         azureSubscription: 'Cloud MSS Lab(04cfef00-086d-4f47-bb60-e2ed0e6843da)'
         appType: 'webAppContainer'
         WebAppName: 'simplewebappcloudmss'
-        DockerNamespace: 'cloudmsscontainerregistry'
+        DockerNamespace: 'cloudmsscontainerregistry.azurecr.io'
         DockerRepository: 'masanchezpcloudmssdemologj'
         DockerImageTag: $(tag)
     
