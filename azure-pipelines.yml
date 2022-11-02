@@ -43,7 +43,6 @@ stages:
       inputs:
         command: push
         #repository: $(imageRepository)
-        repository: "$(containerRegistry)/$(imageRepository):$(tag)"
         #dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         #tags: $(tag)
