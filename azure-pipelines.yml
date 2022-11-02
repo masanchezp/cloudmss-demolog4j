@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '1eb67c02-9cbe-4c86-8dee-e5784191221f'
   imageRepository: 'masanchezpcloudmssdemologj'
   containerRegistry: 'cloudmsscontainerregistry.azurecr.io'
-  imageToScan: 'cloudmsscontainerregistry.azurecr.io/masanchezpcloudmssdemologj'
+  #imageToScan: 'cloudmsscontainerregistry.azurecr.io/masanchezpcloudmssdemologj'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
