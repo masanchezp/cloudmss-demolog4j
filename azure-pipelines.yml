@@ -41,6 +41,13 @@ stages:
       displayName: List docker images
       inputs:
         script: 'docker images'
+    - task: prisma-cloud-compute-scan@3
+      displayName: Prisma scan
+      inputs:
+        scanType: 'images'
+        twistlockService: 'PrismaCloudServiceConnection'
+        #artifact: "$(containerRegistry)/$(imageRepository):$(tag)"
+        artifact: "$(imageRepository):$(tag)"
     - task: Docker@2
       displayName: Push an image to container registry
       inputs:
@@ -50,11 +57,5 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-    - task: prisma-cloud-compute-scan@3
-      displayName: Prisma scan
-      inputs:
-        scanType: 'images'
-        twistlockService: 'PrismaCloudServiceConnection'
-        #artifact: "$(containerRegistry)/$(imageRepository):$(tag)"
-        artifact: "$(imageRepository):$(tag)"
+    
      
