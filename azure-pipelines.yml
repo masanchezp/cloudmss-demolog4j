@@ -57,5 +57,14 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Cloud MSS Lab(04cfef00-086d-4f47-bb60-e2ed0e6843da)'
+        appType: 'webAppContainer'
+        WebAppName: 'simplewebappcloudmss'
+        DockerNamespace: 'cloudmsscontainerregistry'
+        DockerRepository: 'masanchezpcloudmssdemologj'
+        DockerImageTag: $(tag)
     
      
