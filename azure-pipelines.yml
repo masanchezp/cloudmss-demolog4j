@@ -25,7 +25,7 @@ stages:
   displayName: Build and push stage
   jobs:
   - job: Build
-    displayName: Cloud MSS CI example
+    displayName: CI Image
     pool:
       vmImage: $(vmImageName)
     steps:
@@ -37,6 +37,10 @@ stages:
         dockerfile: $(dockerfilePath)
         tags: |
           $(tag)
+    - task: CmdLine@2
+      displayName: List docker images
+      inputs:
+        script: 'docker images'
     - task: Docker@2
       displayName: Push an image to container registry
       inputs:
