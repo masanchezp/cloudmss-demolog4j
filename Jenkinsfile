@@ -61,7 +61,7 @@ pipeline {
 
                 withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
                 //sh 'sudo python3 -m awscli s3 ls'
-                sh 'sudo aws elasticbeanstalk update-environment --application-name "getting-started-app-2" --environment-name "Gettingstartedapp-env-2" --version-label=3'
+                sh 'sudo aws elasticbeanstalk update-environment --application-name "getting-started-app-2" --environment-name "Gettingstartedapp-env-2" --version-label="Sample Application"'
                 }
                 //sh 'aws s3 ls'
                 //sh 'docker run -d --rm -it -p 80:80 masprieto/app-training'
