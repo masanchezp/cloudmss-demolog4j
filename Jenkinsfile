@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest .'
+                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:notvul .'
             }
         }
 
