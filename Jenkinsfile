@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest2 .'
+                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest .'
             }
         }
 
@@ -49,7 +49,7 @@ pipeline {
                     sudo gcloud auth configure-docker
                     '''
                     sh '''
-                    sudo docker push gcr.io/prepro-273413/log4java:latest2
+                    sudo docker push gcr.io/prepro-273413/log4java:latest
                     '''
                 }                           
             }
