@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t masprieto/app-training .'
+                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest .'
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
                 prismaCloudScanImage ca: '',
                 cert: '',
                 dockerAddress: 'unix:///var/run/docker.sock',
-                image: 'masprieto/app-training*',
+                image: 'gcr.io/prepro-273413/log4java*',
                 key: '',
                 logLevel: 'info',
                 podmanPath: '',
@@ -38,41 +38,42 @@ pipeline {
             }
         }
 
-        stage('Login Dockerhub') {
-
-			steps {
-                echo 'Login Dockerhub'
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push Dockerhub') {
-
-			steps {
-                echo 'Push Dockerhub'
-				sh 'docker push masprieto/app-training:latest'
-			}
-		}
-        
-        stage('AWS deployment') {
-
-			steps {
-                echo 'AWS Deployment'
-
-                withAWS(credentials: 'AWS-jenkins-credentials', region: 'us-west-2') {
-                //sh 'sudo python3 -m awscli s3 ls'
-                sh 'sudo aws elasticbeanstalk update-environment --application-name "getting-started-app-3" --environment-name "Gettingstartedapp-env-3" --version-label="Sample Application-1"'
-                }
-                //sh 'aws s3 ls'
-                //sh 'docker run -d --rm -it -p 80:80 masprieto/app-training'
-			}
-		}
+         stage('push gcr') {
+            steps {
+               
+                withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
+                    sh '''
+                    sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                    '''
+                    sh '''
+                    sudo gcloud auth configure-docker
+                    '''
+                    sh '''
+                    sudo docker push gcr.io/prepro-273413/log4java:latest
+                    '''
+                }                           
+            }
+        }
+        stage('GCP Cloud Run Deployment') {
+            steps {
+               
+                withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
+                    sh '''
+                    sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
+                    '''
+                    sh '''
+                    sudo gcloud run services add-iam-policy-binding log4javasample --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
+                    ''' 
+                }                           
+            }
+        }
     }
      post {
         always {
             echo 'Docker logout and more'
-            // Remove image
-            sh 'docker image rm masprieto/app-training:latest'
+            // Remove images
+            //sh 'docker image rm masprieto/app-training:latest'
+            sh 'docker image rm gcr.io/prepro-273413/log4java:latest'
             // docker logout
             sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
