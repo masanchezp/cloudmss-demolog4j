@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest .'
+                sh 'docker build --no-cache -t gcr.io/prepro-273413/log4java:latest5 .'
             }
         }
 
@@ -49,7 +49,7 @@ pipeline {
                     sudo gcloud auth configure-docker
                     '''
                     sh '''
-                    sudo docker push gcr.io/prepro-273413/log4java:latest
+                    sudo docker push gcr.io/prepro-273413/log4java:latest5
                     '''
                 }                           
             }
@@ -73,7 +73,7 @@ pipeline {
             echo 'Docker logout and more'
             // Remove images
             //sh 'docker image rm masprieto/app-training:latest'
-            sh 'docker image rm gcr.io/prepro-273413/log4java:latest'
+            sh 'docker image rm gcr.io/prepro-273413/log4java:latest5'
             // docker logout
             sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
