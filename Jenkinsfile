@@ -32,7 +32,6 @@ pipeline {
                 //ignoreImageBuildTime:true
             }
         }
-
          stage('push gcr') {
             steps {
                
