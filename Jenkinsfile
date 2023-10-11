@@ -56,7 +56,7 @@ pipeline {
                     sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
                     '''
                     sh '''
-                    sudo gcloud run services update log4shellcloudmss --namespace=namespaces/banded-coder-401610/services
+                    sudo gcloud run services update log4shellcloudmss --platform managed --namespace=namespaces/banded-coder-401610/services
                     '''
                     sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
