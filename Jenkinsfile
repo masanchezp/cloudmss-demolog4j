@@ -56,13 +56,10 @@ pipeline {
                     sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
                     '''
                     sh '''
-                    sudo gcloud run services update log4shellcloudmss --platform managed --namespace=namespaces/banded-coder-401610/services
-                    '''
-                    sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
                     '''
                     sh '''
-                    sudo gcloud run services add-iam-policy-binding log4shellcloudmss --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
+                    sudo gcloud run services add-iam-policy-binding demolog4jcloudmss --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
                     ''' 
                 }                           
             }
