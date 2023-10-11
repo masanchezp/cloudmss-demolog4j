@@ -53,7 +53,7 @@ pipeline {
                
                 withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
                     sh '''
-                    gcloud run services list
+                    sudo gcloud run services list
                     '''
                     sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
