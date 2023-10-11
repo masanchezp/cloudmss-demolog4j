@@ -68,8 +68,7 @@ pipeline {
             }
         }
     }
-    
-     post {
+    post {
         always {
             echo 'Docker logout and more'
             // Remove images
