@@ -20,16 +20,16 @@ pipeline {
                 //Scan the image
                 echo 'scan'
                 echo 'If you have any doubt please contact to dstsol_soc_cloudmss@telefonica.com'
-                //prismaCloudScanImage ca: '',
-                //cert: '',
-                //dockerAddress: 'unix:///var/run/docker.sock',
-                //image: 'europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java*',
-                //key: '',
-                //logLevel: 'info',
-                //podmanPath: '',
-                //project: '',
-                //resultsFile: 'prisma-cloud-scan-results.json',
-                //ignoreImageBuildTime:true
+                prismaCloudScanImage ca: '',
+                cert: '',
+                dockerAddress: 'unix:///var/run/docker.sock',
+                image: 'europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java*',
+                key: '',
+                logLevel: 'info',
+                podmanPath: '',
+                project: '',
+                resultsFile: 'prisma-cloud-scan-results.json',
+                ignoreImageBuildTime:true
             }
         }
          stage('push gcr') {
