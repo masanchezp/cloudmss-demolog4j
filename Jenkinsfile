@@ -52,8 +52,11 @@ pipeline {
             steps {
                
                 withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
-                     sh '''
+                    sh '''
                     sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                    '''
+                    sh '''
+                    sudo gcloud config set project banded-coder-401610
                     '''
                     sh '''
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
@@ -65,7 +68,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             echo 'Docker logout and more'
