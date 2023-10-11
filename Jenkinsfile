@@ -62,6 +62,7 @@ pipeline {
             }
         }
     }
+    
      post {
         always {
             echo 'Docker logout and more'
