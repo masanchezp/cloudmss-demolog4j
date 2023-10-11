@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: log4javasample
+  name: log4shellcloudmss
 spec:
   template:
     spec:

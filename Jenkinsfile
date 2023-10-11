@@ -56,7 +56,7 @@ pipeline {
                     sudo gcloud run services replace service.yaml --platform='managed' --region='europe-southwest1'
                     '''
                     sh '''
-                    sudo gcloud run services add-iam-policy-binding log4javasample --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
+                    sudo gcloud run services add-iam-policy-binding log4shellcloudmss --region='europe-southwest1' --member='allUsers' --role='roles/run.invoker'
                     ''' 
                 }                           
             }
