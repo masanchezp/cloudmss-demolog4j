@@ -52,6 +52,9 @@ pipeline {
             steps {
                
                 withCredentials([file(credentialsId: 'gcloud-creds', variable: 'GCLOUD_CREDS')]){
+                     sh '''
+                    sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
+                    '''
                     sh '''
                     sudo gcloud run services list
                     '''
