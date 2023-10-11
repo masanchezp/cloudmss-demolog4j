@@ -40,7 +40,7 @@ pipeline {
                     sudo gcloud auth activate-service-account --key-file="$GCLOUD_CREDS"
                     '''
                     sh '''
-                    sudo gcloud auth configure-docker
+                    sudo gcloud auth configure-docker europe-southwest1-docker.pkg.dev
                     '''
                     sh '''
                     sudo docker push europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest
