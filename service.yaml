@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - image: europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest1
+        - image: europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest
           ports:
             - name: http1
               containerPort: 80

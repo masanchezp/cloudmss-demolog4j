@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build'
-                sh 'docker build --no-cache -t europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest1 .'
+                sh 'docker build --no-cache -t europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest .'
             }
         }
 
@@ -43,7 +43,7 @@ pipeline {
                     sudo gcloud auth configure-docker europe-southwest1-docker.pkg.dev
                     '''
                     sh '''
-                    sudo docker push europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest1
+                    sudo docker push europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest
                     '''
                 }                           
             }
@@ -74,7 +74,7 @@ pipeline {
             echo 'Docker logout and more'
             // Remove images
             //sh 'docker image rm masprieto/app-training:latest'
-            sh 'docker image rm europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest1'
+            sh 'docker image rm europe-southwest1-docker.pkg.dev/banded-coder-401610/cloudmss/log4java:latest'
             // docker logout
             sh 'docker logout'
             // The post section lets you run the publish step regardless of the scan results
