@@ -20,11 +20,11 @@ pipeline {
             }
         }
 
-        stage('Security Scan (If any doubt contact dstsol_soc_cloudmss@telefonica.com)') {
+        stage('Security Scan (If any doubt contact xxxxxxx@telefonica.com)') {
             steps {
                 //Scan the image
                 echo 'scan'
-                echo 'If you have any doubt please contact to dstsol_soc_cloudmss@telefonica.com'
+                echo 'If you have any doubt please contact to xxxxxx@telefonica.com'
                 prismaCloudScanImage ca: '',
                 cert: '',
                 dockerAddress: 'unix:///var/run/docker.sock',
